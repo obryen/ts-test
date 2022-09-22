@@ -24,7 +24,7 @@ async function resolveQuoteFromUrl(urls: string[]): Promise<TResult[]> {
     requestPromises.push(httpGet(singleUrl));
   }
   responses = await Promise.all(requestPromises);
-  const finalResults: TResult[] = [];
+  let finalResults: TResult[] = [];
   for (let res of responses) {
     const message = JSON.parse(res.body).message;
     if (res.status === 200) {
